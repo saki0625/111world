@@ -27,12 +27,7 @@ if (area === "All") {
 currentList = [...countries];
 } else if (area === "Pop2000") {
 currentList = countries.filter(c => {
-if (c.unit === "億人") return true; 
-
-let popNumber = Number(c.pop);
-if (c.unit === "万人" && popNumber >= 2000) return true;
-
-return false;
+return Number(c.pop) >= 2000;
 });
 } else {
 currentList = countries.filter(c => c.area === area);
