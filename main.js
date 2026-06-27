@@ -23,11 +23,14 @@ let solvedIds = [];
 let isMistakenInThisTurn = false;
 
 function setupGame(area) {
-if (area === "All") {
+let choice = String(area).toLowerCase();
+
+if (choice === "all") {
 currentList = [...countries];
-} else if (area === "Pop2000") {
+} else if (choice === "pop2000") {
 currentList = countries.filter(c => {
-return Number(c.pop) >= 2000;
+let num = parseFloat(c.pop); 
+return !isNaN(num) && num >= 2000;
 });
 } else {
 currentList = countries.filter(c => c.area === area);
