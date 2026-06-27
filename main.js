@@ -27,13 +27,17 @@ if (area === "All") {
 currentList = [...countries];
 } else if (area === "Pop2000") {
 currentList = countries.filter(c => {
-if (c.unit === "億人") return true;
-if (c.unit === "万人" && parseFloat(c.pop) >= 2000) return true;
+if (c.unit === "億人") return true; 
+
+let popNumber = Number(c.pop);
+if (c.unit === "万人" && popNumber >= 2000) return true;
+
 return false;
 });
 } else {
 currentList = countries.filter(c => c.area === area);
 }
+
 currentList.sort(() => Math.random() - 0.5);
 
 document.getElementById("total-country-num").innerText = currentList.length;
